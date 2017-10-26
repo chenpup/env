@@ -1,0 +1,24 @@
+--langdef=systemverilog
+--langmap=systemverilog:.svh.sv.svi.svp.inc.h
+--language-force=systemverilog
+--regex-systemverilog=/^[ \t]*(virtual)?[ \t]*class[ \t]*([a-zA-Z_0-9]+)/\2/c,class/
+--regex-systemverilog=/^[ \t]*(virtual)?[ \t]*class[ \t]*`ext_class_name\(([a-zA-Z_0-9]+)\)/\2/c,class/
+--regex-systemverilog=/^[ \t]*module[ \t]*([a-zA-Z_0-9]+)/\1/m,module/
+--regex-systemverilog=/^[ \t]*program[ \t]*([a-zA-Z_0-9]+)/\1/p,program/
+--regex-systemverilog=/^[ \t]*interface[ \t]*([a-zA-Z_0-9]+)/\1/i,interface/
+--regex-systemverilog=/^[ \t]*(virtual)?[ \t]interface[ \t]*([a-zA-Z_0-9]+)[ \t]*([a-zA-Z_0-9]+)/\3/i,interface/
+--regex-systemverilog=/^[ \t]*typedef[ \t]+.*[ \t]+([a-zA-Z_0-9]+)[ \t]*;/\1/e,typedef/
+--regex-systemverilog=/} (\w*_t);/\1/e,} /
+--regex-systemverilog=/} (\w*_s);/\1/e,} /
+--regex-systemverilog=/^[ \t]*package[ \t]*([a-zA-Z_0-9]+)[ \t]*;/\1/i,} /
+--regex-systemverilog=/^[ \t]*(parameter|localparameter)[ \t]*([a-zA-Z_0-9]+)[ \t]*=[ \t]*.*;/\2/i,} /
+--regex-systemverilog=/^[ \t]*`define[ \t]*([a-zA-Z_0-9]+)/\1/d,vmm_defined_macro/
+--regex-systemverilog=/^[ \t]*constraint[ \t]*([a-zA-Z_0-9]+)/\1/s,constraint/
+--regex-systemverilog=/^[ \t]*(virtual)?(import[ \t]+.*)?[ \t]*function[ \t]+(automatic|void|byte|shortint|int|longint|integer|time|bit|logic|reg|shortreal|real|realtime)?[ \t]*(([a-zA-A_0-9]+)[ \t]*)?(([a-zA-Z_0-9]+)[ \t]*::[ \t]*)?([a-zA-Z_0-9]+)[ \t]*(\(|;)/\8/f,function/
+--regex-systemverilog=/^[ \t]*(virtual)?(import[ \t]+\".*\"[ \t]*)?[ \t]*task[ \t]+(automatic)?[ \t]*(([a-zA-Z_0-9]+)[ \t]*::)?[ \t]*([a-zA-Z_0-9]+)[ \t]*(\(|;)/\6/t,task/
+--regex-systemverilog=/^[ \t]*(protected|local|static)?[ \t]*(rand)?[ \t]*(byte|shortint|int|longint|integer|time|bit|logic|reg|shortreal|real|realtime|supply0|supply1|tri|triand|trior|trireg|tri0|tri1|uwire|wire|wand|wor){1}[ \t]*(signed|unsigned)?[ \t]*(\[.*\])?[ \t]*([-a-zA-Z_0-9]+)[ \t]*(\[.*\]| *= *.*)?[ \t]*;/\6/i,} /
+--regex-systemverilog=/^[ \t]*(protected|local|static)?[ \t]*(rand|event|randc)?[ \t]*([a-zA-Z_0-9]+)[ \t]+(#\(.*\))?[ \t]*([a-zA-Z_0-9]+)(\[.*\]| *= *.*)?[ \t]*;/\5/i,} /
+--regex-systemverilog=/^[ \t]*([a-zA-Z_0-9]+)[ \t]*([a-zA-Z_0-9]+)[ \t]*\(.*\)[ \t]*;/\2/i,} /
+--regex-systemverilog=/^[ \t]*([a-zA-Z_0-9]+)[ \t]*:[ \t]*assert[ \t]*property.*/\1/i,} /
+--systemverilog-kinds=+ctfmpievds
+

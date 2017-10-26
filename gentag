@@ -1,0 +1,17 @@
+#!/bin/bash -f
+UVM_HOME=$ICDS_LDV_HOME/tools/uvm/uvm_lib/uvm_sv/sv;
+echo $UVM_HOME;
+echo $PWD;
+find $PWD/. -name "*.sv"       > sv_list
+find $PWD/. -name "*.v"        >> sv_list
+find $PWD/. -name "*.h"        >> sv_list
+find $PWD/. -name "*.svh"      >> sv_list
+find $PWD/. -name "*.svp"      >> sv_list
+find $PWD/. -name "*.svi"      >> sv_list
+find $PWD/. -name "*.inc"      >> sv_list
+find $UVM_HOME/. -name "*.sv"  >> sv_list
+find $UVM_HOME/. -name "*.svh" >> sv_list
+rm tags -f
+/usr/bin/ctags -R -L sv_list
+#~/mytools/bin/ctags -R -L sv_list
+rm sv_list -f
